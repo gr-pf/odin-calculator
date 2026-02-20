@@ -30,6 +30,7 @@
   background-color: aqua;
   width: 100%;
   padding-block: 0.2rem;
+  padding-right: 0.5rem;
 }
 
 .display .result {
@@ -38,6 +39,10 @@
 
 .key-grid {
   background-color: dimgrey;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem 0.5rem;
 }
 
 .key-row {
@@ -55,6 +60,21 @@ ul {
 li {
   font-size: 2rem;
   text-align: center;
+  background-color: antiquewhite;
   flex-grow: 1;
-  padding: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+ul li a {
+  text-decoration: none;
+  width: max-content;
+  color: black;
+  flex-grow: 1;
+}
+
+ul li a:active {
+  background-color: rgb(255, 233, 203);
+  box-shadow: 2px 2px #3b3b3b;
 }
