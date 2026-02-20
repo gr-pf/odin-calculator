@@ -22,6 +22,7 @@
 .display {
   display: flex;
   flex-direction: column;
+  margin-bottom: 0.5rem;
 }
 
 .display p {
@@ -33,6 +34,15 @@
 
 .display .result {
   font-size: 2rem;
+}
+
+.key-grid {
+  background-color: dimgrey;
+}
+
+.key-row {
+  display: flex;
+  gap: 0.5em;
 }
 
 ul {
@@ -47,9 +57,4 @@ li {
   text-align: center;
   flex-grow: 1;
   padding: 1px;
-}
-
-.key-row {
-  display: flex;
-  gap: 0.5em;
 }
