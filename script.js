@@ -1,3 +1,5 @@
-import { add, subtract, multiply, divide } from "./functions.js";
+import { add, subtract, multiply, divide, operate } from "./functions.js";
 
-console.log(add(2, 3));
+let operand1;
+let operand2;
+let operator;
