@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Odin-Calculator</title>
     <script type="module" src="./script.js"></script>
+    <script
+      src="https://kit.fontawesome.com/7dc09205ed.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
@@ -17,36 +21,111 @@
         </div>
         <div class="key-grid">
           <ul class="key-row">
-            <li><a href="#" id="k-7" class="operand">7</a></li>
-            <li><a href="#" id="k-8" class="operand">8</a></li>
-            <li><a href="#" id="k-9" class="operand">9</a></li>
-            <li><a href="#" id="divide" class="operator">/</a></li>
+            <li>
+              <a href="#" id="k-7" class="operand">
+                <i class="fa-solid fa-7"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#" id="k-8" class="operand">
+                <i class="fa-solid fa-8"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#" id="k-9" class="operand">
+                <i class="fa-solid fa-9"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#" id="divide" class="operator">
+                <i class="fa-solid fa-divide"></i>
+              </a>
+            </li>
           </ul>
 
           <ul class="key-row">
-            <li><a href="#" id="k-4" class="operand">4</a></li>
-            <li><a href="#" id="k-5" class="operand">5</a></li>
-            <li><a href="#" id="k-6" class="operand">6</a></li>
-            <li><a href="#" id="multiply" class="operator">*</a></li>
+            <li>
+              <a href="#" id="k-4" class="operand">
+                <i class="fa-solid fa-4"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#" id="k-5" class="operand">
+                <i class="fa-solid fa-5"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#" id="k-6" class="operand">
+                <i class="fa-solid fa-6"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#" id="multiply" class="operator">
+                <i class="fa-solid fa-xmark"></i>
+              </a>
+            </li>
           </ul>
 
           <ul class="key-row">
-            <li><a href="#" id="k-1" class="operand">1</a></li>
-            <li><a href="#" id="k-2" class="operand">2</a></li>
-            <li><a href="#" id="k-3" class="operand">3</a></li>
-            <li><a href="#" id="subtract" class="operator">-</a></li>
+            <li>
+              <a href="#" id="k-1" class="operand">
+                <i class="fa-solid fa-1"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#" id="k-2" class="operand">
+                <i class="fa-solid fa-2"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#" id="k-3" class="operand">
+                <i class="fa-solid fa-3"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#" id="subtract" class="operator">
+                <i class="fa-solid fa-minus"></i>
+              </a>
+            </li>
           </ul>
 
           <ul class="key-row">
-            <li><a href="#" id="positivity" class="operand">+/-</a></li>
-            <li><a href="#" id="k-0" class="operand">0</a></li>
-            <li><a href="#" id="decimal-separator" class="operand">.</a></li>
-            <li><a href="#" id="add" class="operator">+</a></li>
+            <li>
+              <a href="#" id="positivity" class="operand">
+                <i class="fa-solid fa-plus-minus"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#" id="k-0" class="operand">
+                <i class="fa-solid fa-0"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#" id="decimal-separator" class="operand">
+                <svg width="60" height="60">
+                  <circle r="6" cx="30" cy="37" fill="#000000" />
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a href="#" id="add" class="operator">
+                <i class="fa-solid fa-plus"></i>
+              </a>
+            </li>
           </ul>
 
           <ul class="key-row">
-            <li><a href="#" id="eval" class="eval">=</a></li>
+            <li class="eval-container">
+              <a href="#" id="eval" class="eval">
+                <i class="fa-solid fa-equals"></i>
+              </a>
+            </li>
             <li><a href="#" id="clear" class="clear">clear</a></li>
+            <li>
+              <a href="#" id="del" class="del"
+                ><i class="fa-solid fa-delete-left"></i
+              ></a>
+            </li>
           </ul>
         </div>
       </main>

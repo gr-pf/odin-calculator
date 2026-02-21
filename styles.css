@@ -1,3 +1,17 @@
+:root {
+  --bg-color: hsl(0, 0%, 100%);
+  --bg-color-hover: hsl(0, 0%, 98%);
+  --bg-color-light: hsl(0, 0%, 95%);
+  --bg-color-light-hover: hsl(0, 0%, 97%);
+  --bg-color-lighter: hsl(0, 0%, 90%);
+
+  --bg-secondary: hsl(208, 78%, 43%);
+  --bg-secondary-hover: hsl(208, 78%, 41%);
+
+  --font-color: hsl(0, 0%, 0%);
+  --font-color-hover: hsl(0, 0%, 30%);
+}
+
 *,
 *::after,
 *::before {
@@ -7,6 +21,7 @@
 }
 
 .wrapper {
+  margin-top: 2rem;
   display: flex;
   flex-direction: column;
   max-width: 800px;
@@ -15,8 +30,9 @@
 }
 
 .calculator {
-  background-color: rgb(67, 67, 255);
+  background-color: var(--bg-color-lighter);
   padding: 1rem;
+  border-radius: 10px;
 }
 
 .display {
@@ -27,7 +43,7 @@
 
 .display p {
   text-align: right;
-  background-color: aqua;
+  background-color: var(--bg-color);
   width: 100%;
   padding-block: 0.2rem;
   padding-right: 0.5rem;
@@ -38,43 +54,74 @@
 }
 
 .key-grid {
-  background-color: dimgrey;
+  background-color: var(--bg-color-lighter);
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  padding: 0.5rem 0.5rem;
+  padding-top: 0.8rem;
+  border-radius: 10px;
 }
 
-.key-row {
-  display: flex;
-  gap: 0.5em;
-}
-
-ul {
+ul.key-row {
   list-style: none;
   display: flex;
-  justify-content: stretch;
   align-items: center;
+  gap: 8px;
 }
 
 li {
+  width: 80px;
+  height: 80px;
   font-size: 2rem;
   text-align: center;
-  background-color: antiquewhite;
-  flex-grow: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  border-radius: 10px;
+}
+
+li {
+  background-color: var(--bg-color-light);
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+li:hover {
+  background-color: var(--bg-color-light-hover);
+}
+
+li:has(> a.operand) {
+  background-color: var(--bg-color);
+}
+
+li:has(> a.operand):hover {
+  background-color: var(--bg-color-hover);
+}
+li:has(> a#eval) {
+  background-color: var(--bg-secondary);
+}
+
+li:has(> a#eval):hover {
+  background-color: var(--bg-secondary-hover);
 }
 
 ul li a {
   text-decoration: none;
-  width: max-content;
-  color: black;
-  flex-grow: 1;
+  width: 100%;
+  height: 100%;
+  color: var(--font-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
 }
 
-ul li a:active {
-  background-color: rgb(255, 233, 203);
-  box-shadow: 2px 2px #3b3b3b;
+ul li:active {
+  box-shadow: rgba(149, 157, 165, 0.5) 0px 8px 20px;
+}
+
+ul li a:active,
+li.eval-container {
+  color: var(--font-color-hover);
+}
+
+li.eval-container {
+  width: auto;
+  flex-grow: 1;
 }
