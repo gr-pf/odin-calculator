@@ -18,16 +18,45 @@ let stackOperations = [operand1];
 const operatorFunctions = {
   "+": add,
   "-": subtract,
-  "*": multiply,
+  x: multiply,
   "/": divide,
 };
+const litteralId = {
+  "k-0": "0",
+  "k-1": "1",
+  "k-2": "2",
+  "k-3": "3",
+  "k-4": "4",
+  "k-5": "5",
+  "k-6": "6",
+  "k-7": "7",
+  "k-8": "8",
+  "k-9": "9",
+  "decimal-separator": ".",
+  positivity: "+/-",
+  add: "+",
+  subtract: "-",
+  multiply: "x",
+  divide: "/",
+  eval: "eval",
+  clear: "clear",
+  del: "del",
+};
+
+const icons = document.querySelectorAll(".fa-solid");
+icons.forEach((elem) =>
+  elem.addEventListener("click", function (event) {
+    console.log(event);
+    event.preventDefault();
+  }),
+);
 
 const keys = document.querySelectorAll("a");
 
 keys.forEach((elem) =>
   elem.addEventListener("click", function (event) {
-    const keyClass = event.target.className.split(" ").at(0);
-    const keyContent = event.target.textContent;
+    const keyClass = event.currentTarget.className.split(" ").at(0);
+    const keyContent = litteralId[event.currentTarget.id];
     switch (keyClass) {
       case "operand":
         if (postEval) {
@@ -93,6 +122,8 @@ keys.forEach((elem) =>
         showResult("0");
         break;
     }
+    console.log(keyClass);
+    console.log(keyContent);
     console.log(operand1);
     console.log(stackOperations);
     showFormula(getStackText(stackOperations));
