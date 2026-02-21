@@ -1,21 +1,24 @@
 // Logic calculator functions
+function roundFourDigit(num) {
+  return Math.floor(num * 10000) / 10000;
+}
 export function add(a, b) {
-  return +a + +b;
+  return roundFourDigit(+a + +b);
 }
 
 export function subtract(a, b) {
-  return +a - +b;
+  return roundFourDigit(+a - +b);
 }
 
 export function multiply(a, b) {
-  return +a * +b;
+  return roundFourDigit(+a * +b);
 }
 
 export function divide(a, b) {
   if (+b === 0) {
     return "Erreur: div par 0 !";
   }
-  return +a / +b;
+  return roundFourDigit(+a / +b);
 }
 
 export function operate(operand1, operand2, operator) {
