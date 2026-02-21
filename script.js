@@ -64,14 +64,6 @@ const litteralId = {
   del: "del",
 };
 
-const icons = document.querySelectorAll(".fa-solid");
-icons.forEach((elem) =>
-  elem.addEventListener("click", function (event) {
-    console.log(event);
-    event.preventDefault();
-  }),
-);
-
 function mainLogique(keyClass, keyContent) {
   switch (keyClass) {
     case "operand":
@@ -149,15 +141,6 @@ function mainLogique(keyClass, keyContent) {
         break;
       }
       const lastInput = stackInput.pop();
-      console.log(
-        "last input :" +
-          lastInput +
-          "\n" +
-          "type n and n-1 input " +
-          operatorInput.includes(stackInput.at(-1)) +
-          " " +
-          stackInput.at(-1),
-      );
 
       if (operandInput.includes(lastInput) && stackOperations.length === 1) {
         operand1 = deleteLastOperand(lastInput, stackOperations[0]);
@@ -181,14 +164,6 @@ function mainLogique(keyClass, keyContent) {
       break;
   }
 
-  console.log({
-    keyClass: keyClass,
-    keyContent: keyContent,
-    operand1: operand1,
-    stackInput: stackInput,
-
-    stackOperations: stackOperations,
-  });
   showFormula(getStackText(stackOperations));
 }
 
@@ -206,14 +181,13 @@ const calculator = document.querySelector("html");
 
 calculator.addEventListener("keydown", function (event) {
   let keyContent = event.key === "*" ? "x" : event.key;
-  console.log(keyContent);
   let keyClass;
 
   if (operandInput.includes(keyContent)) {
     keyClass = "operand";
   } else if (operatorInput.includes(keyContent)) {
     keyClass = "operator";
-  } else if (keyContent === "Backspace") {
+  } else if (keyContent === "Backspace" || keyContent === "Delete") {
     keyClass = "del";
   } else if (keyContent === "=" || keyContent === "Enter") {
     keyClass = "eval";
