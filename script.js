@@ -8,13 +8,34 @@ import {
   showResult,
   getStackText,
   updateOperand,
+  deleteLastOperand,
 } from "./functions.js";
 
 let operand1 = " 0";
 let operand2 = " 0";
 let operator = "";
+
 let postEval = false;
+
 let stackOperations = [operand1];
+let stackInput = [];
+
+const operandInput = [
+  "0",
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  ".",
+  "+/-",
+];
+const operatorInput = ["+", "/", "x", "-"];
+
 const operatorFunctions = {
   "+": add,
   "-": subtract,
@@ -59,6 +80,7 @@ keys.forEach((elem) =>
     const keyContent = litteralId[event.currentTarget.id];
     switch (keyClass) {
       case "operand":
+        stackInput.push(keyContent);
         if (postEval) {
           operand1 = updateOperand(keyContent, " 0");
           stackOperations[0] = operand1;
@@ -75,6 +97,7 @@ keys.forEach((elem) =>
       case "operator":
         postEval = false;
         if (stackOperations.length < 3) {
+          stackInput.push(keyContent);
           operator = keyContent;
           stackOperations[1] = operator;
         } else if (+operand2 === 0 && operator === "/") {
@@ -83,12 +106,14 @@ keys.forEach((elem) =>
           operator = "";
           postEval = false;
           stackOperations = [operand1];
+          stackInput = [];
           showResult("Erreur: div par 0 !");
         } else {
           operand1 = operate(operand1, operand2, operatorFunctions[operator]);
           operand2 = " 0";
           operator = keyContent;
           stackOperations = [operand1, operator];
+          stackInput = [];
           showResult(operand1);
         }
         break;
@@ -100,12 +125,14 @@ keys.forEach((elem) =>
           operator = "";
           postEval = false;
           stackOperations = [operand1];
+          stackInput = [];
           showResult("Erreur: div par 0 !");
         } else if (stackOperations.length === 3) {
           operand1 = operate(operand1, operand2, operatorFunctions[operator]);
           operand2 = " 0";
           operator = "";
           stackOperations = [operand1];
+          stackInput = [];
           showResult(operand1);
         } else {
           showResult(operand1);
@@ -121,11 +148,52 @@ keys.forEach((elem) =>
         stackOperations = [operand1];
         showResult("0");
         break;
+
+      case "del":
+        if (stackInput.length === 0) {
+          break;
+        }
+        const lastInput = stackInput.pop();
+        console.log(
+          "last input :" +
+            lastInput +
+            "\n" +
+            "type n and n-1 input " +
+            operatorInput.includes(stackInput.at(-1)) +
+            " " +
+            stackInput.at(-1),
+        );
+
+        if (operandInput.includes(lastInput) && stackOperations.length === 1) {
+          operand1 = deleteLastOperand(lastInput, stackOperations[0]);
+          stackOperations[0] = operand1;
+        } else if (
+          operandInput.includes(lastInput) &&
+          !operandInput.includes(stackInput.at(-1))
+        ) {
+          stackOperations.pop();
+          operand2 = " 0";
+        } else if (operandInput.includes(lastInput)) {
+          operand2 = deleteLastOperand(lastInput, stackOperations[2]);
+          stackOperations[2] = operand2;
+        } else if (operatorInput.includes(stackInput.at(-1))) {
+          operator = stackInput.at(-1);
+          stackOperations[1] = operator;
+        } else {
+          operator = "";
+          stackOperations.pop();
+        }
+        break;
     }
-    console.log(keyClass);
-    console.log(keyContent);
-    console.log(operand1);
-    console.log(stackOperations);
+
+    console.log({
+      keyClass: keyClass,
+      keyContent: keyContent,
+      operand1: operand1,
+      stackInput: stackInput,
+
+      stackOperations: stackOperations,
+    });
     showFormula(getStackText(stackOperations));
   }),
 );

@@ -85,3 +85,30 @@ export function updateOperand(key, operand) {
   }
   return updatedOperand;
 }
+
+export function deleteLastOperand(lastKey, operand) {
+  let updatedOperand;
+  switch (lastKey) {
+    case "+/-":
+      updatedOperand = updateOperand(lastKey, operand);
+      break;
+
+    case "0":
+      operand.length === 2 && operand[1] === "0"
+        ? (updatedOperand = operand)
+        : (updatedOperand = operand.slice(0, -1));
+      break;
+
+    case ".":
+      operand.includes(".")
+        ? (updatedOperand = operand.slice(0, -1))
+        : (updatedOperand = operand);
+      break;
+
+    default:
+      operand.length === 2
+        ? (updatedOperand = operand[0] + "0")
+        : (updatedOperand = operand.slice(0, -1));
+  }
+  return updatedOperand;
+}
