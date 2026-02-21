@@ -48,6 +48,13 @@ keys.forEach((elem) =>
         if (stackOperations.length < 3) {
           operator = keyContent;
           stackOperations[1] = operator;
+        } else if (+operand2 === 0 && operator === "/") {
+          operand1 = " 0";
+          operand2 = " 0";
+          operator = "";
+          postEval = false;
+          stackOperations = [operand1];
+          showResult("Erreur: div par 0 !");
         } else {
           operand1 = operate(operand1, operand2, operatorFunctions[operator]);
           operand2 = " 0";
@@ -58,13 +65,22 @@ keys.forEach((elem) =>
         break;
 
       case "eval":
-        if (stackOperations.length === 3) {
+        if (+operand2 === 0 && operator === "/") {
+          operand1 = " 0";
+          operand2 = " 0";
+          operator = "";
+          postEval = false;
+          stackOperations = [operand1];
+          showResult("Erreur: div par 0 !");
+        } else if (stackOperations.length === 3) {
           operand1 = operate(operand1, operand2, operatorFunctions[operator]);
           operand2 = " 0";
           operator = "";
           stackOperations = [operand1];
+          showResult(operand1);
+        } else {
+          showResult(operand1);
         }
-        showResult(operand1);
         postEval = true;
         break;
 

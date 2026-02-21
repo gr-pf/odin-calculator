@@ -12,6 +12,9 @@ export function multiply(a, b) {
 }
 
 export function divide(a, b) {
+  if (+b === 0) {
+    return "Erreur: div par 0 !";
+  }
   return +a / +b;
 }
 
